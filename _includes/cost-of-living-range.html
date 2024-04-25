@@ -1,10 +1,25 @@
 <div class="row mb-4">
-    <div class="col-10" id="cost-range-container-{{$cost->getKey()}}">
+    {% if include.isSubCost %}
+        <label for="cost-range-switch-{{include.cost.name}}" class="form-label h4">{{ include.cost.displayName }}</label>
+    {% else %}
+        <div class="form-check form-switch">
+            <input class="form-check-input cost-range-switch" id="cost-range-switch-{{include.cost.name}}" type="checkbox" role="switch" onchange="handleSwitch(this, '{{include.cost.name}}')" checked>
+            <label for="cost-range-switch-{{include.cost.name}}" class="form-label h4">{{ include.cost.displayName }}</label>
+        </div>
+    {% endif %}
+
+    <div class="col-10" id="cost-range-container-{{include.cost.name}}">
         <div class="row">
             <div class="col">
-                <input type="range" class="form-range cost-range" id="{{$fieldId}}" min="{{ include.cost.minValue }}"
-                max="{{ include.cost.maxValue }}" value="{{ include.cost.initialValue }}"
-                onchange="updateTotalCost(this, 'cost-display-{{ include.cost.name }}');">
+                {% if include.isSubCost %}
+                    <input type="range" class="form-range cost-sub-range-{{ include.mainCost.name }}" id="cost-field-{{include.cost.name}}" min="{{ include.cost.minValue }}"
+                    max="{{ include.cost.maxValue }}" value="{{ include.cost.initialValue }}"
+                    onchange="updateMainCost(this, '{{ include.mainCost.name }}', 'cost-display-{{include.cost.name}}');">
+                {% else %}
+                    <input type="range" class="form-range cost-range" id="cost-field-{{include.cost.name}}" min="{{ include.cost.minValue  }}"
+                    max="{{ include.cost.maxValue }}" value="{{ include.cost.initialValue }}"
+                    onchange="updateTotalCost(this, 'cost-display-{{include.cost.name}}');">
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -15,8 +30,25 @@
                 <small class="text-muted">{% include to-persian-number.html number=include.cost.maxValue %}</small>
             </div>
         </div>
-    </div>
 
+        {% if include.cost.subCosts %}
+            <div class="mt-3">
+                <p class="d-inline-flex">
+                    <button class="btn btn-light" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSubCosts" aria-expanded="false" aria-controls="collapseSubCosts">
+                        ریز هزینه‌ها
+                    </button>
+                </p>
+                <div class="collapse" id="collapseSubCosts">
+                    <div class="card card-body">
+                        {% for subItem in include.cost.subCosts %}
+                            {% include cost-of-living-range.html cost=subItem mainCost=include.cost isSubCost=true %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
     <div class="col-2 text-center" id="cost-total-{{ include.cost.name }}">
         <span class="h4"
               id="cost-display-{{ include.cost.name }}">{% include to-persian-number.html number=include.cost.initialValue %}</span>

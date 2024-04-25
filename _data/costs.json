@@ -1,30 +1,77 @@
 [
   {
+    "name": "accommodation",
+    "displayName": "اجاره خانه",
+    "initialValue": 1800,
+    "minValue": 1000,
+    "maxValue": 4000
+  },
+  {
+    "name": "bills",
+    "displayName": "قبض آب، گاز و برق",
+    "initialValue": 200,
+    "minValue": 150,
+    "maxValue": 300
+  },
+  {
+    "name": "mobile",
+    "displayName": "موبایل",
+    "initialValue": 35,
+    "minValue": 17,
+    "maxValue": 55
+  },
+  {
+    "name": "internet",
+    "displayName": "اینترنت",
+    "initialValue": 79,
+    "minValue": 79,
+    "maxValue": 149
+  },
+  {
+    "name": "grocery",
+    "displayName": "خورد، خوراک و مواد غذایی",
+    "initialValue": 1500,
+    "minValue": 1100,
+    "maxValue": 2150
+  },
+  {
+    "name": "public_transport",
+    "displayName": "حمل و نقل عمومی",
+    "initialValue": 100,
+    "minValue": 50,
+    "maxValue": 200
+  },
+  {
     "name": "car",
+    "displayName": "ماشین",
     "initialValue": 350,
     "minValue": 265,
     "maxValue": 550,
     "subCosts": [
       {
         "name": "carInsurance",
+        "displayName": "بیمه",
         "initialValue": 100,
         "minValue": 75,
         "maxValue": 150
       },
       {
         "name": "carRegistration",
+        "displayName": "رجیستریشن",
         "initialValue": 70,
         "minValue": 70,
         "maxValue": 85
       },
       {
         "name": "carService",
+        "displayName": "سرویس",
         "initialValue": 30,
         "minValue": 20,
         "maxValue": 65
       },
       {
         "name": "carPetrol",
+        "displayName": "بنزین",
         "initialValue": 150,
         "minValue": 100,
         "maxValue": 250
@@ -32,9 +79,17 @@
     ]
   },
   {
-    "name": "accommodation",
-    "initialValue": 1800,
-    "minValue": 1000,
-    "maxValue": 4000
+    "name": "clothes",
+    "displayName": "پوشاک",
+    "initialValue": 300,
+    "minValue": 200,
+    "maxValue": 500
+  },
+  {
+    "name": "health_insurance",
+    "displayName": "بیمه سلامت",
+    "initialValue": 100,
+    "minValue": 36,
+    "maxValue": 260
   }
 ]
