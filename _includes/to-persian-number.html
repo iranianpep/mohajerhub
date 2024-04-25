@@ -1,0 +1,11 @@
+{% assign persian_digits = "۰,۱,۲,۳,۴,۵,۶,۷,۸,۹" | split: "," %}
+{% assign digits = include.number | split: "" %}
+{% assign persian_number = "" %}
+
+{% for digit in digits %}
+  {% assign index = digit | plus: 0 %}
+  {% assign persian_digit = persian_digits[index] %}
+  {% assign persian_number = persian_number | append: persian_digit %}
+{% endfor %}
+
+{{ persian_number }}

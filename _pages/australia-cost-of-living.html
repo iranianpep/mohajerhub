@@ -10,14 +10,22 @@ permalink: /هزینه-زندگی-در-استرالیا/
             <h1 class="mt-3">محاسبه هزینه زندگی در استرالیا</h1>
             <p>هزینه‌ها ماهانه، به دلار استرالیا و برای یک نفر می‌باشند</p>
 
-
+            {% for item in site.data.costs %}
+                {% include cost-of-living-range.html cost=item %}
+            {% endfor %}
 
             <div class="row mt-5">
                 <div class="col-10 text-start h3">
                     مجموع:
                 </div>
                 <div class="col-2 text-center">
-                    <span class="h3" id="total-cost-display">12345679</span>
+                    <span class="h3" id="total-cost-display">
+                        {% assign total_initial = 0 %}
+                        {% for item in site.data.costs %}
+                            {% assign total_initial = total_initial | plus: item.initialValue %}
+                        {% endfor %}
+                        {% include to-persian-number.html number=total_initial %}
+                    </span>
                 </div>
             </div>
         </div>

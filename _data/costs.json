@@ -30,5 +30,11 @@
         "maxValue": 250
       }
     ]
+  },
+  {
+    "name": "accommodation",
+    "initialValue": 1800,
+    "minValue": 1000,
+    "maxValue": 4000
   }
 ]

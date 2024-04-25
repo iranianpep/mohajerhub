@@ -1,0 +1,24 @@
+<div class="row mb-4">
+    <div class="col-10" id="cost-range-container-{{$cost->getKey()}}">
+        <div class="row">
+            <div class="col">
+                <input type="range" class="form-range cost-range" id="{{$fieldId}}" min="{{ include.cost.minValue }}"
+                max="{{ include.cost.maxValue }}" value="{{ include.cost.initialValue }}"
+                onchange="updateTotalCost(this, 'cost-display-{{ include.cost.name }}');">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-end">
+                <small class="text-muted">{% include to-persian-number.html number=include.cost.minValue %}</small>
+            </div>
+            <div class="col text-start">
+                <small class="text-muted">{% include to-persian-number.html number=include.cost.maxValue %}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 text-center" id="cost-total-{{ include.cost.name }}">
+        <span class="h4"
+              id="cost-display-{{ include.cost.name }}">{% include to-persian-number.html number=include.cost.initialValue %}</span>
+    </div>
+</div>
