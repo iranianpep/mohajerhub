@@ -21,5 +21,6 @@
 domain: mohajerhub.github.io 
 url: https://iranianpep.github.io/mohajerhub/ 
 title: مهاجرهاب
+baseurl: "" # the subpath of your site, e.g. /blog
 
 include: ['_pages']
